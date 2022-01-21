@@ -1,9 +1,11 @@
 library(dplyr)
 
 library(readr)
+library(tidyr)
 
 
-lul2_d <- read_file('life-under-lockdown-wave2-extract.xlsx')
+
+lul2_d <- read.csv('life-under-lockdown-wave2-extract.xlsx')
 
 lul2_d %>%
    mutate(know_facebook = ordered(
@@ -14,7 +16,7 @@ lul2_d %>%
     'A great deal'
     ))) %>%
   group_by(know_facebook) %>%
-summarise(n = n(), Beliefs = mean(Beliefs))  
+  summarise(., n = n(), Beliefs = mean(Beliefs))  
 
 
 
